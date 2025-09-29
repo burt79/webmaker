@@ -1,0 +1,44 @@
+webmaker docs
+
+thank you for using the most bloated and flimsy and stupid web blog solution you could ever imagine. webmaker is free and open source, feel free to make it not stupid any more if you are so inclined.
+
+to implement the software into your HTML, put the HTML comment "<!--blog-->" on the line where you make the container element for the blog. for example: "<div class="blog"><!--blog-->". the line will be written normally and all output will be directed to the lines below, and everything below that will also be written normally. 
+
+'webmaker.py' is the main file. run it to use the thing.
+
+webmaker looks in the 'template/' directory for files to read and directs all output to the 'output/' directory. any FTP connections will only send contents of the 'output/' directory by default. external documents like stylesheets must be applied manually.
+
+webmaker saves posts locally in a nonsensical, often not human-readable object notation format called BON (burt object notation). saved posts are written to the 'data.txt' file when changes are saved and read when the program is started again. i recommend not touching the 'data.txt' file. 
+
+	CONFIG
+	
+syntax: "option:value"
+
+all config values are stored as strings in the program by default, so do not add delimiters like apostrophes to your string values. by default, webmaker looks for the file 'conf' in its own directory for a config file. this can not be changed. shut up. 
+
+below is a list of possible config options, their data types, and a description of what they do.
+
+allowFTP (bool)
+default: false
+	allows or disallows the creation of FTP connections.
+
+FTP[ip, port, user, pass] 
+default [127.0.0.1, 21, user, pass]
+	relatively self explanitory i'd like to think. each is defined individually.
+	example: FTPip:127.0.0.1
+			 FTPport:21
+
+HTMLFileName (str)
+default: file.html
+	name of the template/output file that the program will look for/create.
+
+post[Title, Date, Content]Tag (str)
+default: [h1, h3, p]
+	set the HTML tag for the corresponding post element. each is defined individually. tag delimiters (<, >) are added automatically. do not add them in the config file.
+	example: postTitleTag:h2
+			 postDateTag:h3
+	
+postEditorFontSize (int)
+default: 14
+	sets the font size of the text in the post editor interface.
+
